@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: codecagon
+  repo: jx-spring
+  url: https://github.com/codecagon/jx-spring.git
+  version: ""
+  versionURL: ""
