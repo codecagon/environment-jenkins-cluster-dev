@@ -1,38 +1,79 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: true
-  project: ""
   azure: {}
+  clusterName: jenkins-cluster
+  devEnvApprovers:
+  - ikarfall
+  environmentGitOwner: codecagon
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: jenkins-268220
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: europe-north1-a
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    domain: 35.228.164.125.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+gitops: true
 ingress:
-  domain: ""
+  domain: 35.228.164.125.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: gs://jenkins-cluster-logs-b921a1dc-3ea4-4905-b289-e980c001bd
   reports:
     enabled: true
-    url: ""
+    url: gs://jenkins-cluster-reports-a70d2b7f-7e08-4751-af75-f25a63d
   repository:
     enabled: true
-    url: ""
+    url: gs://jenkins-cluster-repository-42d8535a-5dbe-459c-ac54-1957
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
   ref: 2.0.1139+cjxd.6
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git

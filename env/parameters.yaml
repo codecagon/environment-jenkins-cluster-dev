@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:jenkins-cluster/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: ikarfall@gmail.com
+  token: vault:jenkins-cluster/pipelineUser:token
+  username: ikarfall-bot
+prow:
+  hmacToken: vault:jenkins-cluster/prow:hmacToken
